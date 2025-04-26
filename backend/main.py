@@ -17,14 +17,17 @@ async def lifespan(app:FastAPI):
 app = FastAPI(lifespan=lifespan)
 sessions={}
 
-#CORS Setup
+#CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins, you can restrict it to your frontend URL
+    allow_origins=[
+        "https://genai-intern-game-production.up.railway.app"
+    ],
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
+
 
 app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
 
