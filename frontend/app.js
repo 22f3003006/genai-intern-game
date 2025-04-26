@@ -2,6 +2,10 @@ let score = 0;
 let userId = '1';  // fake session
 started=false
 
+backend=window.location.hostname.includes('localhost') 
+? "http://127.0.0.1:8000" 
+: "https://genai-intern-game.up.railway.app";
+
 function toggleInputs(enabled) {
     document.getElementById("guessInput").disabled = !enabled;
     document.getElementById("personaInput").disabled = !enabled;
@@ -25,7 +29,7 @@ async function startGame() {
     clearInputs()
     document.getElementById("start").disabled = true;
     userId = '1';  // Set your fake or real user ID
-    const res = await fetch("http://127.0.0.1:8000/start", {
+    const res = await fetch(`${backend}/start`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -45,7 +49,7 @@ async function makeGuess() {
     const persona = document.getElementById("personaInput").value;
     document.getElementById("feedback").innerText = "Loading...";
     document.getElementById("verdict").innerText = "";
-    const res = await fetch("http://127.0.0.1:8000/guess", {
+    const res = await fetch(`${backend}/guess`, {
                     method: "POST",
                     headers: {
                     "Content-Type": "application/json",
