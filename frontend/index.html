@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What Beats Rock?</title>
+  <link rel="stylesheet" href="frontend/style.css"  />
+</head>
+<body>
+  <div>
+    <h1>🪨 What Beats Rock?</h1>
+    <div class="button_pair_1">
+      <button onclick="startGame()" id="start">Start</button>
+      <button onclick="restartGame()" id="restart">Restart</button>
+    </div>
+  </div>
+  <div id="game">
+    <input id="guessInput" placeholder="Your guess..." />
+    <select name="persona" id="personaInput">
+      <option value="serious">Serious</option>
+      <option value="tricker">Tricker</option>
+      <option value="cheery">Cheery</option>
+    </select>
+    <button onclick="makeGuess()" id="guess">Guess</button>
+    <p id="feedback"></p> 
+    <h6 id="verdict"></h6>
+    <h6 id="total"></h6>
+    <p>Score: <span id="score"></span></p>
+    <ul id="history"></ul>
+  </div>
+  <script src="frontend/app.js"></script>
+</body>
+</html>
